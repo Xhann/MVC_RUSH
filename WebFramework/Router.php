@@ -3,6 +3,7 @@
 namespace WebFramework;
 
 use WebFramework\AppController;
+use App\Controllers\ErrorController;
 
 class Router {
 
@@ -47,7 +48,7 @@ class Router {
    *   of the incomings HTTP requests.
    * @param Controller $controller - The controller class containing the route handler.
    * @param string $handler - Name of the route handler which is orcherstrating
-   *   every interations wih the views and the database.
+   *   every interations with the views and the database.
    */
   public function handle(Request $request, AppController $controller, string $handler) {
     if (!method_exists($controller, $handler)) {
@@ -65,6 +66,7 @@ class Router {
    *   of the incomings HTTP requests.
    */
   public function dispatch(Request $request) {
+    // var_dump($request);
     if (array_key_exists($request->method, $this->routes)
         && array_key_exists($request->route, $this->routes[$request->method])) {
       $route_handler = $this->routes[$request->method][$request->route];
@@ -72,7 +74,9 @@ class Router {
     } else {
       // TODO: Implement a 404 view and render it with TWIG when the
       // requested route is invalid
-      echo '<h1>Page not found</h1>';
+      // example : $this->handle($request, new ErrorCotroller(), 'display_404');
+      $error_display = new ErrorController();
+      $error_display->display_404($request);
     }
   }
 
