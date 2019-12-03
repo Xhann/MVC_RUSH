@@ -5,7 +5,7 @@ return [
   'username' => 'root',
   'password' => 'root',
   'driver' => 'mysql',
-  'host' => '127.0.0.1',
+  'host' => '127.0.0.1:3306',
   'options' => [
     PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION
   ]
