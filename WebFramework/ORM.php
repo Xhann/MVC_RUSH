@@ -2,6 +2,7 @@
 
 namespace WebFramework;
 
+use Exception;
 use \PDO;
 
 class ORM {
@@ -60,7 +61,11 @@ class ORM {
    */
   public function persist($object)
   {
+
+    var_dump($object);
+
     // TODO: Implement this function
+
   }
 
   /**

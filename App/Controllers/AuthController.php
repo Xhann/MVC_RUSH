@@ -5,7 +5,7 @@ namespace App\Controllers;
 use WebFramework\AppController;
 use WebFramework\Router;
 use WebFramework\Request;
-
+use WebFramework\ORM;//ne pas oublier pr appel statique
 use App\Models\User;
 
 class AuthController extends AppController
@@ -31,7 +31,14 @@ class AuthController extends AppController
     }
 
     var_dump($user);
+    
+   
     // TODO: Store user in the database with the ORM (this->orm).
+ 
+    $orm=ORM::getInstance();
+    $orm->persist($user);
+
+
     die();
   }
 }

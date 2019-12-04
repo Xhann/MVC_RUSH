@@ -2,6 +2,8 @@
 
 namespace App\Models;
 
+use DateTime;
+
 class User
 {
   /**
@@ -23,6 +25,33 @@ class User
    * @type string
    */
   private $password;
+
+
+  // Attributs supp
+  /**
+   * @type string
+   */
+  private $group;
+
+  /**
+   * @type string
+   */
+  private $status;
+
+    /**
+   * @type string
+   */
+  private $creationDate;
+
+    /**
+   * @type DateTime
+   */
+  private $modificationDate;
+
+    /**
+   * @type DateTime
+   */
+  //
 
   public function getId(): ?int
   {
@@ -64,6 +93,61 @@ class User
 
     return $this;
   }
+//Champs supp
+  public function getGroup(): ?string
+  {
+    return $this->group;
+  }
+
+  public function setGroup(string $group): self
+  {
+    $this->group = $group;
+
+    return $this;
+  }
+  public function getStatus(): ?string
+  {
+    return $this->status;
+  }
+
+  public function setStatus(string $status): self
+  {
+    $this->status = $status;
+
+    return $this;
+  }
+  public function getCreationDate(): ?DateTime
+  {
+    return $this->creationDate;
+  }
+
+  public function setCreationDate(DateTime $creationDate): self
+  {
+    $this->creationDate = $creationDate;
+
+    return $this;
+  }
+  public function getModificationDate(): ?DateTime
+  {
+    return $this->modificationDate;
+  }
+
+  public function setModificationDate(DateTime $modificationDate): self
+  {
+    $this->modificationDate = $modificationDate;
+
+    return $this;
+  }
+
+// faire le construct // Maj de modifdate sur tous les sets
+  public function __construct()
+  {
+    $this->setGroup(Group::USER);
+    $this->setStatus(Status::CREATION);
+    $this->setCreationDate(new DateTime());
+    $this->setModificationDate(new DateTime());
+  }
+
 
   /**
    * Validate the User model data.
