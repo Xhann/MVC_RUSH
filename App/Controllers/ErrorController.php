@@ -6,20 +6,16 @@ use WebFramework\AppController;
 use WebFramework\Router;
 use WebFramework\Request;
 
-use App\Models\User;
-use WebFramework\ORM;
+// require_once("../../config/db.php");
 
 class ErrorController extends AppController
 {
-  public function display_404(Request $request)
-  {
-    //$orm=getInstance();
-
-    //var_dump($orm->db);
-    return $this->render('404.html.twig', ['base' => $request->base,
+    public function display_404(Request $request)
+    {
+      // $config = getConfigDb();
+      // var_dump($config);
+      return $this->render('404.html.twig', ['base' => $request->route,
       'error' => $this->flashError]);
-  }
-
- 
-  
+    }
 }
+

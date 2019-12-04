@@ -4,6 +4,7 @@ namespace WebFramework;
 
 use App\Controllers\ErrorController;
 use WebFramework\AppController;
+use App\Controllers\ErrorController;
 
 class Router
 {
@@ -59,7 +60,6 @@ class Router
             throw new \Exception("{$controller_name} does not have {$handler}");
         }
 
-        $controller->$handler($request);
     }
 
     /**
@@ -75,7 +75,9 @@ class Router
             $route_handler = $this->routes[$request->method][$request->route];
             $this->handle($request, $route_handler['controller'], $route_handler['handler']);
         } else {
-            $errorPage=new ErrorController;
+                // TODO: Implement a 404 view and render it with TWIG when the
+                // requested route is invalid
+            $errorPage=new ErrorController();
             $errorPage->display_404($request);
         }
     }

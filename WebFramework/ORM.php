@@ -8,6 +8,7 @@ use \PDO;
 class ORM {
 
   private $db;
+  private $objectInPersistance = [];
 
   private $persistArray=[];
 
@@ -98,6 +99,7 @@ class ORM {
     
     // IF UPDATE
     // TODO: Implement this function
+  
   }
 
 

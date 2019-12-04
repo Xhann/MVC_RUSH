@@ -1,15 +1,7 @@
-{# base.html.twig #}
+{% extends 'base.html.twig' %}
 
-<!DOCTYPE html>
-<html>
-  <head>
-    <meta charset="UTF-8">
-      <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-      <title>MVC Application</title>
-  </head>
-  <body>
-    {% block body %}
-    <h1>PAGE NOT FOUND !!!!</h1>
-    {% endblock %}
-  </body>
-</html>
+
+{% block body %}
+<h1>La page demandée "{{base}}" n'existe pas, revenir page d'accueil <a href="/">Accueil</a></h1>
+{% endblock %}
+

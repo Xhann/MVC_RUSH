@@ -13,7 +13,7 @@ use App\Helpers\FlashError;
 class AppController {
 
   private $twig;
-  private $orm;
+  protected $orm;
   public $session;
   public $flashError;
 
