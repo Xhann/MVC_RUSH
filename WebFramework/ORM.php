@@ -71,35 +71,7 @@ class ORM {
   public function flush()
   {
     // TODO: Implement this function
-    foreach($objectInPersistance as $object)
-    {
-      $objet = $this->db->prepare("INSERT INTO users(usename, email, group_user, status, creation_date, modification_date) VALUES(:username, :email, :group_user, :status, :creation_date, :modification_date)");
-    }
-  }
-
-  public function add($object)
-  {
-    
-  }
-
-  public function delete($object)
-  {
-
-  }
-
-  public function update($boject)
-  {
-
-  }
-
-  public function selectAll()
-  {
-    
-  }
-
-  public function selectById($id)
-  {
-
+  
   }
 
 }

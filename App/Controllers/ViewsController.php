@@ -16,4 +16,11 @@ class ViewsController extends AppController
     return $this->render('index.html.twig', ['base' => $request->base,
       'error' => $this->flashError]);
   }
+
+  public function login(Request $request)
+  {
+    return $this->render('login.html.twig', ['base' => $request->base,
+      'error' => $this->flashError]);
+  }
+
 }
