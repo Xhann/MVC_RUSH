@@ -5,7 +5,7 @@ namespace App\Controllers;
 use WebFramework\AppController;
 use WebFramework\Router;
 use WebFramework\Request;
-
+use WebFramework\ORM;//ne pas oublier pr appel statique
 use App\Models\User;
 
 class AuthController extends AppController
@@ -21,6 +21,7 @@ class AuthController extends AppController
     $user->setUsername($request->params['username']);
     $user->setEmail($request->params['email']);
     $user->setPassword($request->params['password']);
+    $user->setPasswordConfirm($request->params['password_confirm']);
 
     try {
       $user->validate();
@@ -30,8 +31,17 @@ class AuthController extends AppController
       return;
     }
 
-    var_dump($user);
+    //var_dump($user);
+    
+   
     // TODO: Store user in the database with the ORM (this->orm).
+    //var_dump($this->orm);
+     $orm=ORM::getInstance();
+     //$orm->userAdd($user);
+
+    $orm->persist($user);
+    $orm->flush($user);
+
     die();
   }
 }
