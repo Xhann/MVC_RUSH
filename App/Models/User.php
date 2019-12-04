@@ -26,12 +26,16 @@ class User
    */
   private $password;
 
+/**
+   * @type string
+   */
+  private $password_confirm;
 
   // Attributs supp
   /**
    * @type string
    */
-  private $group;
+  private $priv;
 
   /**
    * @type string
@@ -93,15 +97,26 @@ class User
 
     return $this;
   }
-//Champs supp
-  public function getGroup(): ?string
+  public function getPasswordConfirm(): ?string
   {
-    return $this->group;
+    return $this->password_confirm;
   }
 
-  public function setGroup(string $group): self
+  public function setPasswordConfirm(string $password_confirm): self
   {
-    $this->group = $group;
+    $this->password_confirm = $password_confirm;
+
+    return $this;
+  }
+//Champs supp
+  public function getPriv(): ?string
+  {
+    return $this->priv;
+  }
+
+  public function setPriv(string $priv): self
+  {
+    $this->priv = $priv;
 
     return $this;
   }
@@ -142,11 +157,12 @@ class User
 // faire le construct // Maj de modifdate sur tous les sets
   public function __construct()
   {
-    $this->setGroup(Group::USER);
+    $this->setPriv(Priv::USER);
     $this->setStatus(Status::CREATION);
     $this->setCreationDate(new DateTime());
     $this->setModificationDate(new DateTime());
   }
+
 
 
   /**
@@ -158,14 +174,17 @@ class User
   {
     $err = '';
 
-    if (empty($this->username) || strlen($this->username) <= 3) {
-      $err = $err . "Invalid 'username' field. Must have more than 3 characters.<br>";
+    if (empty($this->username) || preg_match("#^[a-zA-Z0-9_]{3,10}$#", $this->username) != 1) {
+      $err = $err . "Invalid 'username' field. Must have between than 3 and 10 characters.<br>";
     }
     if (empty($this->email) || preg_match('#^[a-zA-Z0-9]+@[a-zA-Z]{2,}\.[a-z]{2,4}$#', $this->email) != 1) {
       $err = $err . "Invalid 'email' field. Wrong format.<br>";
     }
-    if (empty($this->password)) {
-      $err = $err . "Invalid 'password' field. Can't be blank.<br>";
+    if (empty($this->password) || preg_match("#^[a-zA-Z0-9_]{8,20}$#", $this->password) != 1){
+      $err = $err . "Invalid 'password' field. Must have between than 8 and 20 characters.<br>";
+    }
+    if (empty($this->password) || $this->password!==$this->password_confirm){
+      $err = $err . "'password' field and 'password' field don't match.<br>";
     }
 
     if (!empty($err)) {

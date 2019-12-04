@@ -3,9 +3,9 @@
 namespace App\Models;
 
 abstract class Status {
-    const CREATION = 0;
-    const ACTIF = 1;
-    const BANNI= 2;
+    const CREATION = "EN COURS DE CREATION";
+    const ACTIF = "ACTIF";
+    const BANNI= "BANNI";
     
     private function __construct()
     {

@@ -2,10 +2,10 @@
 
 namespace App\Models;
 
-abstract class Group {
-    const USER = 0;
-    const WRITER = 1;
-    const ADMIN= 2;
+abstract class Priv {
+    const USER = "USER";
+    const WRITER = "WRITER";
+    const ADMIN= "ADMIN";
     
     private function __construct()
     {

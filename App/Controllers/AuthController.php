@@ -21,6 +21,7 @@ class AuthController extends AppController
     $user->setUsername($request->params['username']);
     $user->setEmail($request->params['email']);
     $user->setPassword($request->params['password']);
+    $user->setPasswordConfirm($request->params['password_confirm']);
 
     try {
       $user->validate();
@@ -30,14 +31,16 @@ class AuthController extends AppController
       return;
     }
 
-    var_dump($user);
+    //var_dump($user);
     
    
     // TODO: Store user in the database with the ORM (this->orm).
- 
-    $orm=ORM::getInstance();
-    $orm->persist($user);
+    //var_dump($this->orm);
+     $orm=ORM::getInstance();
+     //$orm->userAdd($user);
 
+    $orm->persist($user);
+    $orm->flush($user);
 
     die();
   }
