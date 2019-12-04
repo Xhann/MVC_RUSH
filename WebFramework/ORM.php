@@ -7,6 +7,7 @@ use \PDO;
 class ORM {
 
   private $db;
+  private $objectInPersistance = [];
 
   private static $instance = null;
 
@@ -61,6 +62,7 @@ class ORM {
   public function persist($object)
   {
     // TODO: Implement this function
+    $this->objectInPersistance[] = $object;
   }
 
   /**
@@ -69,6 +71,35 @@ class ORM {
   public function flush()
   {
     // TODO: Implement this function
+    foreach($objectInPersistance as $object)
+    {
+      $objet = $this->db->prepare("INSERT INTO users(usename, email, group_user, status, creation_date, modification_date) VALUES(:username, :email, :group_user, :status, :creation_date, :modification_date)");
+    }
+  }
+
+  public function add($object)
+  {
+    
+  }
+
+  public function delete($object)
+  {
+
+  }
+
+  public function update($boject)
+  {
+
+  }
+
+  public function selectAll()
+  {
+    
+  }
+
+  public function selectById($id)
+  {
+
   }
 
 }

@@ -7,6 +7,7 @@ use WebFramework\Router;
 use WebFramework\Request;
 
 use App\Models\User;
+use WebFramework\ORM;
 
 class AuthController extends AppController
 {
@@ -32,6 +33,8 @@ class AuthController extends AppController
 
     var_dump($user);
     // TODO: Store user in the database with the ORM (this->orm).
+    $this->orm->persist($user);
+    $this->orm->flush();
     die();
   }
 }
