@@ -35,7 +35,7 @@ class User
   /**
    * @type string
    */
-  private $priv;
+  private $privilegesileges;
 
   /**
    * @type string
@@ -109,14 +109,14 @@ class User
     return $this;
   }
 //Champs supp
-  public function getPriv(): ?string
+  public function getPrivileges(): ?string
   {
-    return $this->priv;
+    return $this->privileges;
   }
 
-  public function setPriv(string $priv): self
+  public function setPrivileges(string $privileges): self
   {
-    $this->priv = $priv;
+    $this->privileges = $privileges;
 
     return $this;
   }
@@ -150,14 +150,13 @@ class User
   public function setModificationDate(DateTime $modificationDate): self
   {
     $this->modificationDate = $modificationDate;
-
     return $this;
   }
 
 // faire le construct // Maj de modifdate sur tous les sets
   public function __construct()
   {
-    $this->setPriv(Priv::USER);
+    $this->setPrivileges(Priv::USER);
     $this->setStatus(Status::CREATION);
     $this->setCreationDate(new DateTime());
     $this->setModificationDate(new DateTime());
