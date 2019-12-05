@@ -173,10 +173,10 @@ class User
   {
     $err = '';
 
-    if (empty($this->username) || preg_match("#^[a-zA-Z0-9_]{3,10}$#", $this->username) != 1) {
+    if (empty($this->username) || preg_match("#^[a-zA-Z0-9]{3,10}$#", $this->username) != 1) {
       $err = $err . "Invalid 'username' field. Must have between than 3 and 10 characters.<br>";
     }
-    if (empty($this->email) || preg_match('#^[a-zA-Z0-9]+@[a-zA-Z]{2,}\.[a-z]{2,4}$#', $this->email) != 1) {
+    if (empty($this->email) || preg_match('#^[a-zA-Z0-9_.-]+@[a-zA-Z]{2,}\.[a-z]{2,4}$#', $this->email) != 1) {
       $err = $err . "Invalid 'email' field. Wrong format.<br>";
     }
     if (empty($this->password) || preg_match("#^[a-zA-Z0-9_]{8,20}$#", $this->password) != 1){

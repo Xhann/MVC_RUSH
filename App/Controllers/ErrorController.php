@@ -6,8 +6,6 @@ use WebFramework\AppController;
 use WebFramework\Router;
 use WebFramework\Request;
 
-// require_once("../../config/db.php");
-
 class ErrorController extends AppController
 {
     public function display_404(Request $request)

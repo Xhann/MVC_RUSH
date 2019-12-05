@@ -42,7 +42,20 @@ class AuthController extends AppController
     $orm->persist($user);
     $orm->flush($user);
 
-
+    $this->redirect('/' . $request->base . 'login?msg=registered', '302');
     die();
+  }
+
+  public function login_view(Request $request)
+  {
+    var_dump($request);
+    $msg;
+    isset($request->params['msg']) ? $msg=$request->params["msg"] : $msg ="";
+    return $this->render('auth/login.html.twig', ['base' => $request->base,
+      'error' => $this->flashError, 'msg'=>$msg]);
+  }
+
+  public function login(Request $request){
+    
   }
 }
