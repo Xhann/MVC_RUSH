@@ -8,7 +8,7 @@ class Admin extends User{
 
     public function __construct()
     {
-      $this->setPriv(Priv::ADMIN);
+      $this->setPrivileges(Priv::ADMIN);
       $this->setStatus(Status::CREATION);
       $this->setCreationDate(new DateTime());
       $this->setModificationDate(new DateTime());

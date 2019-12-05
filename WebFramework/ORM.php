@@ -93,13 +93,46 @@ class ORM {
     $stmt->bindValue(':status', $object->getStatus(),PDO::PARAM_STR);
     $stmt->bindValue(':creation_date', $object->getCreationDate()->format('Y-m-d H:i:s'),PDO::PARAM_STR);
     $stmt->bindValue(':modification_date', $object->getModificationDate()->format('Y-m-d H:i:s'),PDO::PARAM_STR);
-    //print_r($stmt);
+
     $stmt->execute();
-    //print_r($stmt->fetchAll());   
+
     }
     
     // IF UPDATE
     // TODO: Implement this function
   }
 
+<<<<<<< HEAD
+=======
+  public static function checkEmailDuplicates($email)
+  {
+      $orm=ORM::getInstance();
+      $stmt=$orm->db->prepare("SELECT * FROM users WHERE email= ?");
+      $stmt->bindParam(1, $email, PDO::PARAM_STR);
+      $stmt->execute();
+      $duplicate=$stmt->fetch();
+      return $duplicate;
+  }
+  public static function checkUser($username,$password)
+  {
+      
+      $orm=ORM::getInstance();
+      $stmt=$orm->db->prepare("SELECT password FROM users WHERE username= ?");
+      $stmt->bindParam(1, $username, PDO::PARAM_STR);
+      $stmt->execute();
+      $hash=$stmt->fetch();
+      return password_verify($password,$hash[0]);
+  }
+
+  public static function getUserByUsername($username)
+  {
+      $orm=ORM::getInstance();
+      $stmt=$orm->db->prepare("SELECT * FROM users WHERE username= ?");
+      $stmt->bindParam(1, $username, PDO::PARAM_STR);
+      $stmt->execute();
+      $result=$stmt->fetch(PDO::FETCH_ASSOC);
+      return $result;
+
+  }
+>>>>>>> 1ea0ad4d4bce7e20ddf3547a9040c0a0c1c49654
 }

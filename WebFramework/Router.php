@@ -69,7 +69,7 @@ class Router
      *   of the incomings HTTP requests.
      */
     public function dispatch(Request $request)
-    {   
+    {
         // var_dump($request);
         if (array_key_exists($request->method, $this->routes)
         && array_key_exists($request->route, $this->routes[$request->method])) {
