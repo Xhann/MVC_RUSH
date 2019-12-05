@@ -63,6 +63,7 @@ class ORM {
   {
     // TODO: Implement this function
     $this->objectInPersistance[] = $object;
+    var_dump($this->objectInPersistance);
   }
 
   /**
@@ -71,7 +72,6 @@ class ORM {
   public function flush()
   {
     // TODO: Implement this function
-  
   }
 
 }
