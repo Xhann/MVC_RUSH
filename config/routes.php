@@ -6,3 +6,4 @@ $router->use('POST', '/auth/register', new App\Controllers\AuthController(), 're
 $router->use('GET', '', new App\Controllers\ViewsController(), 'index');
 $router->use('GET', '/login', new App\Controllers\ViewsController(), 'login');
 
+$router->use('GET', '', new App\Controllers\ViewsController(), 'index');

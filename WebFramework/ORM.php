@@ -50,6 +50,7 @@ class ORM {
         $config['password'],
         $config['options']
       );
+
       return $this->db;
     }
     catch (Exception $e) {

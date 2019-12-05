@@ -4,7 +4,6 @@ namespace WebFramework;
 
 use App\Controllers\ErrorController;
 use WebFramework\AppController;
-use App\Controllers\ErrorController;
 
 class Router
 {
@@ -60,6 +59,7 @@ class Router
             throw new \Exception("{$controller_name} does not have {$handler}");
         }
 
+        $controller->$handler($request);
     }
 
     /**

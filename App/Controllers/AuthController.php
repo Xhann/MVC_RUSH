@@ -7,7 +7,7 @@ use WebFramework\Router;
 use WebFramework\Request;
 use WebFramework\ORM;//ne pas oublier pr appel statique
 use App\Models\User;
-use WebFramework\ORM;
+
 
 class AuthController extends AppController
 {

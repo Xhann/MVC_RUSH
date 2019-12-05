@@ -1,4 +1,0 @@
-RewriteEngine on
-RewriteBase /MVC_Sample_PHP/
-RewriteRule /WebRoot [L]
-RewriteRule (.*) WebRoot/$1 [L]
