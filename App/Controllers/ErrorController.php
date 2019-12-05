@@ -18,3 +18,4 @@ class ErrorController extends AppController
       'error' => $this->flashError]);
     }
 }
+
