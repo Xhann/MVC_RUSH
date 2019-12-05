@@ -80,14 +80,14 @@ class ORM {
     foreach ($this->persistArray as $object)
     {
 
-    $sql = "INSERT INTO users (username, password, email, priv, status, creation_date, modification_date) VALUES (:username, :password, :email, :priv, :status, :creation_date, :modification_date)";                     
+    $sql = "INSERT INTO users (username, password, email, privileges, status, creation_date, modification_date) VALUES (:username, :password, :email, :privileges, :status, :creation_date, :modification_date)";                     
     $stmt = $this->db->prepare($sql);
 
    // var_dump($object->getUsername(),$object->getPassword(),$object->getEmail(),$object->getPriv(),$object->getStatus(),$object->getCreationDate()->format('Y-m-d H:i:s'),$object->getModificationDate()->format('Y-m-d H:i:s'));                             
     $stmt->bindValue(':username', $object->getUsername(),PDO::PARAM_STR);
     $stmt->bindValue(':password', password_hash($object->getPassword(),PASSWORD_DEFAULT),PDO::PARAM_STR); 
     $stmt->bindValue(':email', $object->getEmail(),PDO::PARAM_STR);       
-    $stmt->bindValue(':priv', $object->getPriv(),PDO::PARAM_STR);
+    $stmt->bindValue(':privileges', $object->getPrivileges(),PDO::PARAM_STR);
     $stmt->bindValue(':status', $object->getStatus(),PDO::PARAM_STR);
     $stmt->bindValue(':creation_date', $object->getCreationDate()->format('Y-m-d H:i:s'),PDO::PARAM_STR);
     $stmt->bindValue(':modification_date', $object->getModificationDate()->format('Y-m-d H:i:s'),PDO::PARAM_STR);
@@ -100,5 +100,14 @@ class ORM {
     // TODO: Implement this function
   }
 
+  public static function checkEmailDuplicates($email)
+  {
+      $orm=ORM::getInstance();
+      $stmt=$orm->db->prepare("SELECT * FROM users WHERE email= ?");
+      $stmt->bindParam(1, $email, PDO::PARAM_STR);
+      $stmt->execute();
+      $duplicate=$stmt->fetch();
+      return $duplicate;
+  }
 
 }

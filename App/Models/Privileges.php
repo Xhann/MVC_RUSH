@@ -2,7 +2,7 @@
 
 namespace App\Models;
 
-abstract class Priv {
+abstract class Privileges {
     const USER = "USER";
     const WRITER = "WRITER";
     const ADMIN= "ADMIN";

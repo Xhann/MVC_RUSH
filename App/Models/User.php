@@ -1,7 +1,7 @@
 <?php
 
 namespace App\Models;
-
+use WebFramework\ORM;
 use DateTime;
 
 class User
@@ -35,7 +35,7 @@ class User
   /**
    * @type string
    */
-  private $priv;
+  private $privileges;
 
   /**
    * @type string
@@ -109,14 +109,14 @@ class User
     return $this;
   }
 //Champs supp
-  public function getPriv(): ?string
+  public function getPrivileges(): ?string
   {
-    return $this->priv;
+    return $this->privileges;
   }
 
-  public function setPriv(string $priv): self
+  public function setPrivileges(string $privileges): self
   {
-    $this->priv = $priv;
+    $this->privileges = $privileges;
 
     return $this;
   }
@@ -157,7 +157,7 @@ class User
 // faire le construct // Maj de modifdate sur tous les sets
   public function __construct()
   {
-    $this->setPriv(Priv::USER);
+    $this->setPrivileges(Privileges::USER);
     $this->setStatus(Status::CREATION);
     $this->setCreationDate(new DateTime());
     $this->setModificationDate(new DateTime());
@@ -180,6 +180,9 @@ class User
     if (empty($this->email) || preg_match('#^[a-zA-Z0-9]+@[a-zA-Z]{2,}\.[a-z]{2,4}$#', $this->email) != 1) {
       $err = $err . "Invalid 'email' field. Wrong format.<br>";
     }
+    if (ORM::checkEmailDuplicates($this->email)) {
+      $err = $err . "This email is already registered. Please use login.<br>";
+    }
     if (empty($this->password) || preg_match("#^[a-zA-Z0-9_]{8,20}$#", $this->password) != 1){
       $err = $err . "Invalid 'password' field. Must have between than 8 and 20 characters.<br>";
     }
@@ -187,9 +190,12 @@ class User
       $err = $err . "'password' field and 'password' field don't match.<br>";
     }
 
+
+
     if (!empty($err)) {
       throw new \Exception($err);
     }
+   
 
     return $err;
   }

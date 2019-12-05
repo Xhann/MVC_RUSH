@@ -42,6 +42,9 @@ class AuthController extends AppController
     $orm->persist($user);
     $orm->flush($user);
 
+
+    $this->redirect('/' . $request->base . 'login', '302');
+
     die();
   }
 }
