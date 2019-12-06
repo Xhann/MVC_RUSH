@@ -25,7 +25,7 @@ class AuthController extends AppController
 
     try {
       $user->validate();
-      if ($this->orm->checkEmailDuplicates($this->email)) {
+      if ($this->orm->checkEmailDuplicates($user->getEmail())) {
         throw new Exception("This email is already registered. Please use login.<br>") ;
     }
     } catch (\Exception $e) {

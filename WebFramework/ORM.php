@@ -85,7 +85,6 @@ class ORM {
 
   public function checkEmailDuplicates($email)
   {
-      $this->getInstance();
       $stmt=$this->db->prepare("SELECT * FROM users WHERE email= ?");
       $stmt->bindParam(1, $email, PDO::PARAM_STR);
       $stmt->execute();
@@ -94,8 +93,6 @@ class ORM {
   }
   public function checkUser($username,$password)
   {
-      
-      $this->getInstance();
       $stmt=$this->db->prepare("SELECT password FROM users WHERE username= ?");
       $stmt->bindParam(1, $username, PDO::PARAM_STR);
       $stmt->execute();
@@ -105,7 +102,6 @@ class ORM {
 
   public function getUserByUsername($username)
   {
-      $this->getInstance();
       $stmt=$this->db->prepare("SELECT * FROM users WHERE username= ?");
       $stmt->bindParam(1, $username, PDO::PARAM_STR);
       $stmt->execute();
@@ -114,7 +110,6 @@ class ORM {
   }
   public function getUserIdByEmail($email)
   {
-      $this->getInstance();
       $stmt=$this->db->prepare("SELECT id FROM users WHERE email= ?");
       $stmt->bindParam(1, $email, PDO::PARAM_STR);
       $stmt->execute();
@@ -123,7 +118,6 @@ class ORM {
   }
   public function deleteUserById($id)
   {
-      $this->getInstance();
       $stmt=$this->db->prepare("DELETE * FROM users WHERE id= ?");
       $stmt->bindParam(1, $id, PDO::PARAM_INT);
       $stmt->execute();
@@ -131,7 +125,6 @@ class ORM {
 
   public function getAllUsers()
   {
-      $this->getInstance();
       $stmt=$this->db->prepare("SELECT * FROM users");
       $stmt->execute();
       $result=$stmt->fetch(PDO::FETCH_ASSOC);
