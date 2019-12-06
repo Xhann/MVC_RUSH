@@ -144,9 +144,6 @@ class User
         if (empty($this->email) || preg_match('#^[a-zA-Z0-9._-]+@[a-zA-Z]{2,}\.[a-z]{2,4}$#', $this->email) != 1) {
             $err = $err . "Invalid 'email' field. Wrong format.<br>";
         }
-        if (ORM::checkEmailDuplicates($this->email)) {
-            $err = $err . "This email is already registered. Please use login.<br>";
-        }
         if (empty($this->password) || preg_match("#^[a-zA-Z0-9._-]{8,20}$#", $this->password) != 1) {
             $err = $err . "Invalid 'password' field. Must have between than 8 and 20 characters.<br>";
         }

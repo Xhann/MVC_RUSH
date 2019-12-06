@@ -111,7 +111,15 @@ class ORM {
       $stmt->execute();
       $result=$stmt->fetch(PDO::FETCH_ASSOC);
       return $result;
-
+  }
+  public function getUserIdByEmail($email)
+  {
+      $this->getInstance();
+      $stmt=$this->db->prepare("SELECT id FROM users WHERE email= ?");
+      $stmt->bindParam(1, $email, PDO::PARAM_STR);
+      $stmt->execute();
+      $result=$stmt->fetch(PDO::FETCH_ASSOC);
+      return $result;
   }
   public function deleteUserById($id)
   {

@@ -2,12 +2,10 @@
 
 namespace App\Controllers;
 
-use App\Helpers\FlashError;
 use WebFramework\AppController;
-use App\Helpers\Session;
 use WebFramework\Request;
-use WebFramework\ORM;//ne pas oublier pr appel statique
 use App\Models\User;
+use Exception;
 
 class AuthController extends AppController
 {
@@ -26,29 +24,25 @@ class AuthController extends AppController
 
     try {
       $user->validate();
+      if ($this->orm->checkEmailDuplicates($this->email)) {
+        throw new Exception("This email is already registered. Please use login.<br>") ;
+    }
     } catch (\Exception $e) {
       $this->flashError->set($e->getMessage());
       $this->redirect('/' . $request->base . 'auth/register', '302');
       return;
     }
 
-    //var_dump($user);
-    
-   
     // TODO: Store user in the database with the ORM (this->orm).
     $this->orm->getInstance();
     $this->orm->persist($user);
     $this->orm->flush($user);
-
-
     $this->redirect('/' . $request->base . 'login?msg=registered', '302');
-
     die();
   }
   public function login_view(Request $request)
   {
       
-
         $msg="";
         if (isset($request->params['msg']))
         {
@@ -57,7 +51,6 @@ class AuthController extends AppController
 
         return $this->render('login.html.twig', ['base' => $request->base,
         'error' => $this->flashError->get(),'msg' => $msg]);
-
   }
       
 
@@ -74,13 +67,11 @@ class AuthController extends AppController
       $password=$request->params['password'];
     }
 
-    if ($this->orm->checkUser($request->params['username'],$request->params['password']))
+    if ($this->orm->checkUser($username,$password))
     {
-      
       // initialisation $_SESSION
       $userFetched=$this->orm->getUserByUsername($username);
       $this->session->getInstance();
-
       foreach ($userFetched as $field=>$value)
       {
         $this->session->set($field,$value);

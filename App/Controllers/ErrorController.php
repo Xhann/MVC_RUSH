@@ -3,11 +3,8 @@
 namespace App\Controllers;
 
 use WebFramework\AppController;
-use WebFramework\Router;
 use WebFramework\Request;
 
-use App\Models\User;
-use WebFramework\ORM;
 
 class ErrorController extends AppController
 {
