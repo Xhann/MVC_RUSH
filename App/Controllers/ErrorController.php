@@ -11,9 +11,8 @@ class ErrorController extends AppController
   public function display_404(Request $request)
   {
     return $this->render('404.html.twig', ['base' => $request->base,
-      'error' => $this->flashError]);
-  }
 
- 
-  
+      'error' => $this->flashError]);
+    }
 }
+

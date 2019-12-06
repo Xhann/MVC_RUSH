@@ -45,7 +45,7 @@ class User
     /**
    * @type DateTime
    */
-    //
+
     public function getId(): ?int
     {
         return $this->id;
@@ -53,6 +53,7 @@ class User
     public function getUsername(): ?string
     {
         return $this->username;
+
     }
     public function setUsername(string $username): self
     {

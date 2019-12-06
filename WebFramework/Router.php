@@ -65,13 +65,15 @@ class Router
      */
     public function dispatch(Request $request)
     {
-        var_dump($request);
+        // var_dump($request);
         if (array_key_exists($request->method, $this->routes)
         && array_key_exists($request->route, $this->routes[$request->method])) {
             $route_handler = $this->routes[$request->method][$request->route];
             $this->handle($request, $route_handler['controller'], $route_handler['handler']);
         } else {
-            $errorPage=new ErrorController;
+                // TODO: Implement a 404 view and render it with TWIG when the
+                // requested route is invalid
+            $errorPage=new ErrorController();
             $errorPage->display_404($request);
         }
     }

@@ -8,6 +8,7 @@ use App\Models\User;
 use App\Helpers\FlashError;
 use Exception;
 
+
 class AuthController extends AppController
 {
   public function register_view(Request $request)
@@ -43,15 +44,18 @@ class AuthController extends AppController
   }
   public function login_view(Request $request)
   {
-      
-        $msg="";
-        if (isset($request->params['msg']))
-        {
-          $msg=$request->params['msg'];
-        }
 
-        return $this->render('auth/login.html.twig', ['base' => $request->base,
-        'error' => $this->flashError->get(),'msg' => $msg]);
+
+    $msg="";
+    if (isset($request->params['msg']))
+    {
+      $msg=$request->params['msg'];
+    }
+
+    return $this->render('auth/login.html.twig', ['base' => $request->base,
+    'error' => $this->flashError->get(),'msg' => $msg]);
+
+
   }
       
 
@@ -77,6 +81,7 @@ class AuthController extends AppController
       {
         $this->session->set($field,$value);
       }
+
       $this->redirect('/' . $request->base . 'index', '302');
     }
     else

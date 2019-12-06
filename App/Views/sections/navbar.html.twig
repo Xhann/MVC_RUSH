@@ -1,7 +1,9 @@
 {# navbar section #}
 
 <nav class="navbar navbar-expand-md navbar-dark sticky-top bg-dark">
-    <a class="navbar-brand" href="#">Fixed navbar</a>
+
+    <a class="navbar-brand" href="#">FF Corporation</a>
+
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse"
         aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
@@ -9,6 +11,7 @@
     <div class="collapse navbar-collapse" id="navbarCollapse">
         <ul class="navbar-nav mr-auto">
             <li class="nav-item active">
+
                 <a class="nav-link" href="/Webroot/index">Home <span class="sr-only">(current)</span></a>
             </li>
             <li class="nav-item">
@@ -16,12 +19,18 @@
             </li>
             {% if username == "" %}
             <li class="nav-item">
+
                 <a class="nav-link" href="/Webroot/auth/login" tabindex="-1" aria-disabled="true">Log in</a>
             </li>
             {% else %}
             <li class="nav-item">
                 <a class="nav-link" href="/Webroot/logout">Log out <span class="sr-only">(current)</span></a>
             </li>
+
+            <li class="nav-item">
+                <a class="nav-link" href="/Webroot/articles">Articles <span class="sr-only">(current)</span></a>
+            </li>
+
             {% endif %}
         </ul>
         <form class="form-inline mt-2 mt-md-0">

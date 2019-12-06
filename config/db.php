@@ -3,9 +3,9 @@
 return [
   'dbname' => 'mvc',
   'username' => 'root',
-  'password' => 'password',
+  'password' => 'root',
   'driver' => 'mysql',
-  'host' => '127.0.0.1:3306',
+  'host' => 'localhost:8889',
   'options' => [
     PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION
   ]
