@@ -17,3 +17,8 @@ $router->use('GET', '/index', new App\Controllers\ViewsController(), 'index');
 $router->use('GET', '/admin_dashboard', new App\Controllers\AdminController(), 'admin_view');
 
 $router->use('GET', '/delete_account', new App\Controllers\AdminController(), 'delete_account');
+
+// Articles Handling
+$router->use('GET', '/articles', new App\Controllers\ArticlesController(), 'articles_view');
+$router->use('GET', '/article', new App\Controllers\ArticlesController(), 'article_by_id');
+$router->use('GET', '/edit_article', new App\Controllers\ArticlesController(), 'edit_article');
