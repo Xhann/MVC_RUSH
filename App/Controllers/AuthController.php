@@ -5,6 +5,7 @@ namespace App\Controllers;
 use WebFramework\AppController;
 use WebFramework\Request;
 use App\Models\User;
+use App\Helpers\FlashError;
 use Exception;
 
 class AuthController extends AppController
@@ -37,7 +38,7 @@ class AuthController extends AppController
     $this->orm->getInstance();
     $this->orm->persist($user);
     $this->orm->flush($user);
-    $this->redirect('/' . $request->base . 'login?msg=registered', '302');
+    $this->redirect('/' . $request->base . 'auth/login?msg=registered', '302');
     die();
   }
   public function login_view(Request $request)
@@ -49,7 +50,7 @@ class AuthController extends AppController
           $msg=$request->params['msg'];
         }
 
-        return $this->render('login.html.twig', ['base' => $request->base,
+        return $this->render('auth/login.html.twig', ['base' => $request->base,
         'error' => $this->flashError->get(),'msg' => $msg]);
   }
       
@@ -80,9 +81,9 @@ class AuthController extends AppController
     }
     else
     { 
-      $this->FlashError->getInstance();
-      $this->FlashError->set("You are not registered, please register.");
-      $this->redirect('/' . $request->base . 'login?error', '302');
+      $e=FlashError::getInstance();
+      $e->set("You are not registered, please register.");
+      $this->redirect('/' . $request->base . 'auth/login?error', '302');
       return;
     }
 
@@ -92,7 +93,7 @@ class AuthController extends AppController
  {
     $this->session->getInstance();
     $this->session->destroy();
-    $this->redirect('/' . $request->base . 'login', '302');
+    $this->redirect('/' . $request->base . 'auth/login', '302');
  }
 
 }

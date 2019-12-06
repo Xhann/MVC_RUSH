@@ -129,4 +129,12 @@ class ORM {
       $stmt->execute();
   }
 
+  public function getAllUsers()
+  {
+      $this->getInstance();
+      $stmt=$this->db->prepare("SELECT * FROM users");
+      $stmt->execute();
+      $result=$stmt->fetch(PDO::FETCH_ASSOC);
+      return $result;
+  }
 }

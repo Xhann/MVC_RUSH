@@ -18,7 +18,7 @@ class ViewsController extends AppController
   {
     $privileges=$users['privileges'];
     $username=$users['username'];
-    
+
     if ($privileges==Privileges::USER)
     {
       return $this->render('index.html.twig', ['base' => $request->base,
@@ -26,14 +26,14 @@ class ViewsController extends AppController
     }
     if ($privileges==Privileges::ADMIN)
     {
-      return $this->render('admin.html.twig', ['base' => $request->base,
+      return $this->render('admin_dashboard.html.twig', ['base' => $request->base,
       'error' => $this->flashError, 'username' => $username ]);
     }
     
   }
   else
   {
-    $this->redirect('/' . $request->base . 'login', '302');
+    $this->redirect('/' . $request->base . 'auth/login', '302');
   }
     
   }

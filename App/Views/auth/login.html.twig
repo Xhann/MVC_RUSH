@@ -10,7 +10,7 @@
         {% if error != "" %}
         <div class="alert alert-sucess" role="alert">{{ error }}</div>
         {% endif %}
-        <form action="/{{ base }}login" name="login" id="contactForm" method="post" novalidate class="form-signin">
+        <form action="/{{ base }}auth/login" name="login" id="contactForm" method="post" novalidate class="form-signin">
             <h1 class="h3 mb-3 font-weight-normal">Please sign in</h1>
             <label for="username" class="sr-only">Username</label>
             <input type="username" name="username" class="form-control" placeholder="User Name" required autofocus>
