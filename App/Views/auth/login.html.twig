@@ -3,19 +3,17 @@
 {% block body %}
 
 <div class="text-center justify-content-center align-items-center row">
-    <div class="col-md-6 col-sm-12 col-lg-4 mt-5">
+    <div class="col-md-6 col-sm-12 col-lg-4">
         {% if msg != "" %}
-        <div class="alert alert-success" role="alert">User has been {{msg}}</div>
+        <div class="alert alert-sucess" role="alert">User has been {{msg}}</div>
         {% endif %}
         {% if error != "" %}
-        <div class="alert alert-danger" role="alert">{{ error }}</div>
+        <div class="alert alert-sucess" role="alert">{{ error }}</div>
         {% endif %}
-        <form action="/{{ base }}login" name="login" id="contactForm" method="post" novalidate class="form-signin mt-5">
+        <form action="/{{ base }}auth/login" name="login" id="contactForm" method="post" novalidate class="form-signin">
             <h1 class="h3 mb-3 font-weight-normal">Please sign in</h1>
-            <div class="form-group">
-                <label for="username" class="sr-only">Username</label>
-                <input type="username" name="username" class="form-control" placeholder="User Name" required autofocus>
-            </div>
+            <label for="username" class="sr-only">Username</label>
+            <input type="username" name="username" class="form-control" placeholder="User Name" required autofocus>
             <div class="form-group">
                 <label for="password" class="sr-only">Password</label>
                 <input type="password" name="password" class="form-control" placeholder="Password" required>

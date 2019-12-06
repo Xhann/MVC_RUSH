@@ -1,5 +1,4 @@
 <?php
-
 namespace WebFramework;
 
 class Autoloader
