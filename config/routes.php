@@ -11,6 +11,7 @@ $router->use('GET', '/logout', new App\Controllers\AuthController(), 'logout');
 
 // Index Route Handling
 $router->use('GET', '', new App\Controllers\ViewsController(), 'index');
+$router->use('GET', '/index', new App\Controllers\ViewsController(), 'index');
 
 // Admin Dashbord Handling
 $router->use('GET', '/admin_dashboard', new App\Controllers\AdminController(), 'admin_view');

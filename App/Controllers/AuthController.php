@@ -55,7 +55,7 @@ class AuthController extends AppController
       $msg=$request->params['msg'];
     }
 
-    return $this->render('login.html.twig', ['base' => $request->base,
+    return $this->render('auth/login.html.twig', ['base' => $request->base,
     'error' => $this->flashError->get(),'msg' => $msg]);
 
   }
@@ -82,11 +82,11 @@ class AuthController extends AppController
       $userFetched=ORM::getUserByUsername($username);
       $session=Session::getInstance();
 
-      foreach ($userFetched as $field=>$value)
+      foreach ($userFetched as $field => $value)
       {
-        $session->set($field,$value);
+        $session->set($field, $value);
       }
-      //var_dump($session->getValues());
+      // die("aaa");
       $this->redirect('/' . $request->base . 'index', '302');
     }
     else

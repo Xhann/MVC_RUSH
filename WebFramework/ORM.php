@@ -102,8 +102,6 @@ class ORM {
     // TODO: Implement this function
   }
 
-<<<<<<< HEAD
-=======
   public static function checkEmailDuplicates($email)
   {
       $orm=ORM::getInstance();
@@ -134,5 +132,4 @@ class ORM {
       return $result;
 
   }
->>>>>>> 1ea0ad4d4bce7e20ddf3547a9040c0a0c1c49654
 }
