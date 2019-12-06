@@ -1,5 +1,4 @@
 <?php
-
 namespace WebFramework;
 
 class Request {
@@ -14,7 +13,6 @@ class Request {
     $this->method = $_SERVER['REQUEST_METHOD'];
     $this->params = $_REQUEST;
   }
-
   /**
     * Retrieve requested route and remove query params from it in order
     * to redirect to the correct route.
@@ -23,7 +21,6 @@ class Request {
     $url = trim(
         parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH), '/'
     );
-    //$pos = strpos($url, '/');
     $pos = strpos($url,'/') ?: strlen($url);
     $this->base = substr($url, 0, ($pos) !== false ? $pos + 1 : 0);
     $this->route = substr($url, ($pos) !== false ? $pos : 0);

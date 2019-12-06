@@ -36,9 +36,9 @@ class AuthController extends AppController
     
    
     // TODO: Store user in the database with the ORM (this->orm).
-    $orm=ORM::getInstance();
-    $orm->persist($user);
-    $orm->flush($user);
+    $this->orm->getInstance();
+    $this->orm->persist($user);
+    $this->orm->flush($user);
 
 
     $this->redirect('/' . $request->base . 'login?msg=registered', '302');
@@ -74,25 +74,23 @@ class AuthController extends AppController
       $password=$request->params['password'];
     }
 
-    //var_dump(ORM::checkUser($username,$password));
-    if (ORM::checkUser($request->params['username'],$request->params['password']))
+    if ($this->orm->checkUser($request->params['username'],$request->params['password']))
     {
       
       // initialisation $_SESSION
-      $userFetched=ORM::getUserByUsername($username);
-      $session=Session::getInstance();
+      $userFetched=$this->orm->getUserByUsername($username);
+      $this->session->getInstance();
 
       foreach ($userFetched as $field=>$value)
       {
-        $session->set($field,$value);
+        $this->session->set($field,$value);
       }
-      //var_dump($session->getValues());
       $this->redirect('/' . $request->base . 'index', '302');
     }
     else
     { 
-      $error=FlashError::getInstance();
-      $error->set("You are not registered, please register.");
+      $this->FlashError->getInstance();
+      $this->FlashError->set("You are not registered, please register.");
       $this->redirect('/' . $request->base . 'login?error', '302');
       return;
     }
@@ -101,9 +99,9 @@ class AuthController extends AppController
  }
  public function logout(Request $request)
  {
-   $session=Session::getInstance();
-   $session->destroy();
-   $this->redirect('/' . $request->base . 'login', '302');
+    $this->session->getInstance();
+    $this->session->destroy();
+    $this->redirect('/' . $request->base . 'login', '302');
  }
 
 }

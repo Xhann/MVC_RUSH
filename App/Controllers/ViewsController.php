@@ -11,14 +11,13 @@ use App\Models\User;
 
 class ViewsController extends AppController
 {
-
   public function index(Request $request)
   {
 
-  $session=Session::getInstance();
-  $users=$session->getValues();
+  $this->session->getInstance();
+  $users=$this->session->getValues();
   $username="";
-  if ($session->get('username'))
+  if ($this->session->get('username'))
   {
     $username=$users['username'];
     return $this->render('index.html.twig', ['base' => $request->base,

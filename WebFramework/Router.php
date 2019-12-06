@@ -1,5 +1,4 @@
 <?php
-
 namespace WebFramework;
 
 use App\Controllers\ErrorController;
@@ -11,7 +10,6 @@ class Router
     'GET' => [],
     'POST' => [],
   ];
-
     /**
      * Use a routing file to create new routes and link theses to a controller
      * and an handler.
@@ -26,7 +24,6 @@ class Router
 
         return $router;
     }
-
     /**
      * Link a new route to a controller and a handler.
      *
@@ -42,7 +39,6 @@ class Router
       'handler' => $handler
     ];
     }
-
     /**
      * Call the handler of a route.
      *
@@ -61,7 +57,6 @@ class Router
 
         $controller->$handler($request);
     }
-
     /**
      * Manage incoming requests and forward theses to the correct handlers.
      *

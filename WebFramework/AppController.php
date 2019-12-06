@@ -1,19 +1,16 @@
 <?php
-
 namespace WebFramework;
 
 use Twig_Environment;
 use Twig_Loader_Filesystem;
-
 use WebFramework\ORM;
-
 use App\Helpers\Session;
 use App\Helpers\FlashError;
 
 class AppController {
 
   private $twig;
-  private $orm;
+  protected $orm;
   public $session;
   public $flashError;
 
@@ -31,7 +28,6 @@ class AppController {
     $this->session = Session::getInstance();
     $this->flashError = FlashError::getInstance();
   }
-
   /**
    * Render a view.
    *
@@ -42,7 +38,6 @@ class AppController {
   {
     echo $this->twig->render($view, $context);
   }
-
   /**
    * Redirect to an URL.
    *
