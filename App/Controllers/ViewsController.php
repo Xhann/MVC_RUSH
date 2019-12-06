@@ -26,7 +26,7 @@ class ViewsController extends AppController
   }
   else
   {
-    $this->redirect('/' . $request->base . 'login', '302');
+    $this->redirect('/' . $request->base . '/login', '302');
   }
     
   }

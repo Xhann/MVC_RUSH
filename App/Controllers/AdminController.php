@@ -14,4 +14,9 @@ class AdminController extends AppController
         return $this->render('admin_dashboard.html.twig', ['base' => $request->route,
       'error' => $this->flashError]);
     }
+
+    public function delete_account(Request $request)
+    {
+      
+    }
 }

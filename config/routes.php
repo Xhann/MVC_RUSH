@@ -16,3 +16,4 @@ $router->use('GET', '/index', new App\Controllers\ViewsController(), 'index');
 // Admin Dashbord Handling
 $router->use('GET', '/admin_dashboard', new App\Controllers\AdminController(), 'admin_view');
 
+$router->use('GET', '/delete_account', new App\Controllers\AdminController(), 'delete_account');

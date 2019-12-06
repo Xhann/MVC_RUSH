@@ -14,12 +14,13 @@
             <li class="nav-item">
                 <a class="nav-link" href="/Webroot/auth/register">Register</a>
             </li>
+            {% if username == "" %}
             <li class="nav-item">
                 <a class="nav-link" href="/Webroot/login" tabindex="-1" aria-disabled="true">Log in</a>
             </li>
-            {% if username != "" %}
+            {% else %}
             <li class="nav-item">
-                <a class="nav-link" href="/Webroot">Log out <span class="sr-only">(current)</span></a>
+                <a class="nav-link" href="/Webroot/logout">Log out <span class="sr-only">(current)</span></a>
             </li>
             {% endif %}
         </ul>
